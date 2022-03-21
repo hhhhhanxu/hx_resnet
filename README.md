@@ -1,1 +1,2 @@
 # hx_resnet
+基于pytorch实现的使用Resnet进行分类的代码，可使用wandb进行数据统计与分析
