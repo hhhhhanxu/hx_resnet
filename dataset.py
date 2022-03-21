@@ -1,8 +1,8 @@
 '''
 Author: hanxu
 Date: 2022-03-21 09:04:29
-LastEditors:  
-LastEditTime: 2022-03-21 20:36:08
+LastEditors: Please set LastEditors
+LastEditTime: 2022-03-21 21:07:30
 FilePath: /resnet/dataset.py
 Description: a dataset for langqiao person classify
 
@@ -15,19 +15,21 @@ from torch.autograd import Variable
 from torchvision import transforms
 
 from utils.print_color_txt import colorstr
+from utils.letter_box_for_pseron import letter_resize
 
 import numpy as np
 import cv2 as cv
 import os
 
 class langqiao_dataset(Dataset):
-    def __init__(self,root_path,img_size=384,train=True,transform=None):
+    def __init__(self,root_path,letter=letter_resize,img_size=384,train=True,transform=None,):
         self.root_path = os.path.join(root_path,'train' if train else 'test')
         self.img_list,self.label_list = self._get_img_list()
         self.img_size = img_size
         self.transform = transform
+        self.letter = letter
+        
     
-
     def __getitem__(self,index):
 
         img = cv.imread(os.path.join(self.root_path,str(self.label_list[index] if self.label_list[index]!=2 else 3),self.img_list[index])) #BGR
@@ -35,7 +37,8 @@ class langqiao_dataset(Dataset):
         h,w = img.shape[:2]
         if h!=w:
             #add letter_box, and update img & h & w 
-            pass
+            img = letter_resize.cv2_letterbox_image_by_warp(img, (self.img_size,self.img_size))
+            h,w = img.shape[:2]
         if h/self.img_size !=1:
             # 实际上letter box输出的就是目的size,这里应该是没用的
             img = cv.resize(img,(self.img_size,self.img_size))
