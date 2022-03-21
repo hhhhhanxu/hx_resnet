@@ -1,0 +1,35 @@
+{
+    "os": "Linux-4.15.0-140-generic-x86_64-with-glibc2.10",
+    "python": "3.8.5",
+    "heartbeatAt": "2022-03-21T13:58:22.774081",
+    "startedAt": "2022-03-21T13:58:21.753146",
+    "docker": null,
+    "gpu": "Tesla T4",
+    "gpu_count": 6,
+    "cpu_count": 72,
+    "cuda": "11.0.207",
+    "args": [
+        "--data_dir",
+        "/data_plus/dataset/my_fgvc_dataset/letterbox/",
+        "--save_dir",
+        "result/",
+        "--batch_size",
+        "32",
+        "--lr",
+        "0.02",
+        "--device",
+        "0,5"
+    ],
+    "state": "running",
+    "program": "train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": "https://github.com/hhhhhanxu/hx_resnet.git",
+        "commit": "4eefc6abf409de8fc02fda4bc84d6ee643b57ff8"
+    },
+    "email": null,
+    "root": "/home/hx/some_code/hx_resnet",
+    "host": "Doctor-server2",
+    "username": "hx",
+    "executable": "/home/hx/miniconda3/envs/yolo5/bin/python"
+}

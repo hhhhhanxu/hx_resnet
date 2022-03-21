@@ -55,7 +55,7 @@ def train(opt,device):
         num_workers =2
     )
     #加载模型
-    model = My_resnet(model_size=opt.model_size,num_classes=opt.num_class)
+    model = My_resnet(pretrained=opt.use_pretrained,model_size=opt.model_size,num_classes=opt.num_class)
     cuda = device.type != 'cpu'
     if cuda: 
         model = model.cuda()

@@ -16,10 +16,12 @@ import torch.nn.functional as F
 import torchvision
 
 class My_resnet(nn.Module):
-    def __init__(self,model_size = 101,num_classes=3):
+    def __init__(self,pretrained = True,model_size = 101,num_classes=3):
         super(My_resnet,self).__init__()
+        self.pretrained = pretrained
         self.conv = nn.Conv2d(3,3,kernel_size=1)
         self.resnet = self._init_model(model_size,num_classes)
+
 
 
     def forward(self,x):
@@ -30,13 +32,13 @@ class My_resnet(nn.Module):
 
     def _init_model(self,model_size,num_classes):
         if model_size == 101:
-            resnet = torchvision.models.resnet101(pretrained=False,num_classes=num_classes)
+            resnet = torchvision.models.resnet101(pretrained=self.pretrained ,num_classes=num_classes)
         elif model_size == 50:
-            resnet = torchvision.models.resnet50(pretrained=False,num_classes=num_classes)
+            resnet = torchvision.models.resnet50(pretrained=self.pretrained ,num_classes=num_classes)
         elif model_size == 34:
-            resnet = torchvision.models.resnet50(pretrained=False,num_classes=num_classes)
+            resnet = torchvision.models.resnet50(pretrained=self.pretrained ,num_classes=num_classes)
         elif model_size == 152:
-            resnet = torchvision.models.resnet152(pretrained=False,num_classes=num_classes)
+            resnet = torchvision.models.resnet152(pretrained=self.pretrained ,num_classes=num_classes)
 
         return resnet
 
