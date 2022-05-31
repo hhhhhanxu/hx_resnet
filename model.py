@@ -42,6 +42,7 @@ class My_resnet(nn.Module):
         elif model_size == 18:
             resnet = torchvision.models.resnet18(pretrained=self.pretrained ,num_classes=num_classes)
 
+            
         return resnet
 
 if __name__ == "__main__":
