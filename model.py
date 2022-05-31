@@ -39,6 +39,8 @@ class My_resnet(nn.Module):
             resnet = torchvision.models.resnet50(pretrained=self.pretrained ,num_classes=num_classes)
         elif model_size == 152:
             resnet = torchvision.models.resnet152(pretrained=self.pretrained ,num_classes=num_classes)
+        elif model_size == 18:
+            resnet = torchvision.models.resnet18(pretrained=self.pretrained ,num_classes=num_classes)
 
         return resnet
 
